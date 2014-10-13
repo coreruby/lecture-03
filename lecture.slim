@@ -11,3 +11,87 @@ section
 
 section.center
   img.inline src="img/troll.png"
+
+section.center data-background="#000"
+  h2.white Intuition
+
+section
+  h2 Class
+  ul
+    li Like a recipe
+    li A recipe for an object
+    li A recipe can take properties from another
+
+section
+  h2 Object
+  ul
+    li Has data, as the recipe prescribed, kinda
+    li Has behavior, as the recipe prescribed
+
+section.center data-background="#000"
+  h2.white Abstract
+
+section
+  h2 Class
+  p Its opened with the keyword class
+  pre: code.ruby
+    '
+      class Version
+        attr_accessor :major
+        attr_accessor :minor
+        attr_accessor :patch
+
+        def initialize(major, minor, patch)
+          @major, @minor, @patch = major, minor, patch
+        end
+      end
+
+section
+  h2 Class
+  ul
+    li It contains methods and instance variables
+    li Some of those methods are a bit special
+  pre: code.ruby
+    '
+      class Version
+        attr_accessor :major
+        attr_accessor :minor
+        attr_accessor :patch
+
+        def initialize(major, minor, patch)
+          @major, @minor, @patch = major, minor, patch
+        end
+      end
+
+section
+  h2 Object
+  p Is an instance of a class
+  pre: code.ruby
+    '
+      >> version = Version.new(1, 0, 0)
+      => #<Version:0x007fa5239c1088 @major=1, @minor=0, @patch=0>
+
+      >> version.major
+      => 1
+
+section
+  h2 Object
+  p Is created from a method
+  pre: code.ruby
+    '
+      >> version = Version.new(1, 0, 0)
+      => #<Version:0x007fa5239c1088 @major=1, @minor=0, @patch=0>
+
+      >> version.major
+      => 1
+
+section
+  h2 Object
+  p Usually, the method Class#new
+  pre: code.ruby
+    '
+      >> version = Version.new(1, 0, 0)
+      => #<Version:0x007fa5239c1088 @major=1, @minor=0, @patch=0>
+
+      >> version.major
+      => 1
