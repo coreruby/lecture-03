@@ -308,6 +308,56 @@ section
         end
       end
 
+section
+  h2 Module
+  ul
+    li Store methods
+    li Those methods can be included in other modules
+    li Cannot be instantiated
+
+section
+  h2 Module
+  p Defined by the keyword module
+  pre: code.ruby
+    '
+      module Filterable
+        def filter
+          result = []
+          each do |element|
+            result << element if yield(element)
+          end
+          aesult
+        end
+      end
+
+section
+  h2 Module
+  p Included in a class or module with the method Module#include
+  pre: code.ruby
+    '
+      class Collection
+        include Filterable
+
+        def initialize(*data)
+          @data = data
+        end
+
+        def each(&block)
+          @data.each(&block)
+        end
+      end
+
+
+section
+  h2 Module
+  p The newly added methods are available
+  pre: code.ruby
+    '
+      >> collection = Collection.new(1, 2, 3, 4, 5)
+      => #<Collection:0x007fa5238d4440 @data=[1, 2, 3, 4, 5]>
+      >> collection.filter(&:odd?)
+      => [1, 3, 5]
+
 section.center data-background="#000"
   h2.white Abstract
 
