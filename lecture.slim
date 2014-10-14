@@ -275,6 +275,39 @@ section
       >> version.major = 2
       => 2
 
+section
+  h2 self
+  p Returns the object itself
+  pre: code.ruby
+    '
+      class Object
+        def itself
+          self
+        end
+      end
+
+section
+  h2 self
+  p Can be used to call methods on
+  pre: code.ruby
+    '
+      class Array
+        def filter_primes
+          self.filter { |element| element.prime? }
+        end
+      end
+
+section
+  h2 self
+  p If omitted it is called implicitly
+  pre: code.ruby
+    '
+      class Array
+        def filter_primes
+          filter { |element| element.prime? }
+        end
+      end
+
 section.center data-background="#000"
   h2.white Abstract
 

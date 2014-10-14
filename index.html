@@ -361,6 +361,45 @@ NameError: undefined local variable or method `major' for main:Object
 >> version.major = 2
 => 2 </code></pre>
 </section>
+<section>
+  <h2>
+    self
+  </h2>
+  <p>
+    Returns the object itself
+  </p>
+  <pre><code class="ruby">class Object
+  def itself
+    self
+  end
+end </code></pre>
+</section>
+<section>
+  <h2>
+    self
+  </h2>
+  <p>
+    Can be used to call methods on
+  </p>
+  <pre><code class="ruby">class Array
+  def filter_primes
+    self.filter { |element| element.prime? }
+  end
+end </code></pre>
+</section>
+<section>
+  <h2>
+    self
+  </h2>
+  <p>
+    If omitted it is called implicitly
+  </p>
+  <pre><code class="ruby">class Array
+  def filter_primes
+    filter { |element| element.prime? }
+  end
+end </code></pre>
+</section>
 <section class="center" data-background="#000">
   <h2 class="white">
     Abstract
