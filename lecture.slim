@@ -76,14 +76,15 @@ section
 
 section
   h2 Object
-  p Is created from a method
+  h2 Class
+  p Its opened with the keyword class
   pre: code.ruby
     '
-      >> version = Version.new(1, 0, 0)
-      => #<Version:0x007fa5239c1088 @major=1, @minor=0, @patch=0>
-
-      >> version.major
-      => 1
+      class Version
+        def initialize(major, minor, patch)
+          @major, @minor, @patch = major, minor, patch
+        end
+      end
 
 section
   h2 Object
@@ -95,6 +96,156 @@ section
 
       >> version.major
       => 1
+
+section
+  h2 Instance Variables
+  p Identifier prefixed with a @
+  pre: code.ruby
+    '
+      class Version
+        def initialize(major, minor, patch)
+          @major, @minor, @patch = major, minor, patch
+        end
+      end
+
+section
+  h2 Instance Variables
+  p Object specific
+  pre: code.ruby
+    '
+      class Version
+        def initialize(major, minor, patch)
+          @major, @minor, @patch = major, minor, patch
+        end
+      end
+
+section
+  h2 Instance Variables
+  p Cannot be accessed outside of an object
+  pre: code.ruby
+    '
+      >> version = Version.new(1, 0, 0)
+      => #<Version:0x007fa5239c1088 @major=1, @minor=0, @patch=0>
+
+      >> version.@major
+      SyntaxError: (irb):11: syntax error, unexpected tIVAR, expecting '('
+
+section
+  h2 attr_accessor
+  p To solve that, there are methods available to expose them
+  pre: code.ruby
+    '
+      class Version
+        attr_accessor :major
+        attr_accessor :minor
+        attr_accessor :patch
+
+        def initialize(major, minor, patch)
+          @major, @minor, @patch = major, minor, patch
+        end
+      end
+
+section
+  h2 attr_accessor
+  p Creates a getter and setter
+  pre: code.ruby
+    '
+      class Version
+        attr_accessor :major
+        attr_accessor :minor
+        attr_accessor :patch
+
+        def initialize(major, minor, patch)
+          @major, @minor, @patch = major, minor, patch
+        end
+      end
+
+section
+  h2 attr_accessor
+  p Creates a getter and setter
+  pre: code.ruby
+    '
+      class Version
+        attr_accessor :major
+        attr_accessor :minor
+        attr_accessor :patch
+
+        def initialize(major, minor, patch)
+          @major, @minor, @patch = major, minor, patch
+        end
+      end
+
+section
+  h2 attr_accessor
+  p Creates a getter and setter
+  pre: code.ruby
+    '
+      >> version = Version.new(1, 0, 0)
+      => #<Version:0x007fa5239c1088 @major=1, @minor=0, @patch=0>
+
+      >> version.major = 2
+      => 2
+      >> version.major
+      => 2
+
+section
+  h2 attr_reader
+  p Creates a getter only
+  pre: code.ruby
+    '
+      class Version
+        attr_reader :major
+        attr_reader :minor
+        attr_reader :patch
+
+        def initialize(major, minor, patch)
+          @major, @minor, @patch = major, minor, patch
+        end
+      end
+
+section
+  h2 attr_reader
+  p Creates a getter only
+  pre: code.ruby
+    '
+      >> version = Version.new(1, 0, 0)
+      => #<Version:0x007fa5239c1088 @major=1, @minor=0, @patch=0>
+
+      >> version.major
+      => 1
+      >> version.major = 2
+      NameError: undefined local variable or method `major=' for main:Object
+
+section
+  h2 attr_writter
+  p Creates a setter only
+  pre: code.ruby
+    '
+      class Version
+        attr_writter :major
+        attr_writter :minor
+        attr_writter :patch
+
+        def initialize(major, minor, patch)
+          @major, @minor, @patch = major, minor, patch
+        end
+      end
+
+section
+  h2 attr_writter
+  p Creates a setter only
+  pre: code.ruby
+    '
+      >> version = Version.new(1, 0, 0)
+      => #<Version:0x007fa5239c1088 @major=1, @minor=0, @patch=0>
+
+      >> version.major
+      NameError: undefined local variable or method `major' for main:Object
+      >> version.major = 2
+      => 2
+
+section.center data-background="#000"
+  h2.white This was a bad example ;)
 
 section.center data-background="#000"
   h2.white Abstract

@@ -130,14 +130,17 @@ end </code></pre>
   <h2>
     Object
   </h2>
+  <h2>
+    Class
+  </h2>
   <p>
-    Is created from a method
+    Its opened with the keyword class
   </p>
-  <pre><code class="ruby">>> version = Version.new(1, 0, 0)
-=> #<Version:0x007fa5239c1088 @major=1, @minor=0, @patch=0>
-
->> version.major
-=> 1 </code></pre>
+  <pre><code class="ruby">class Version
+  def initialize(major, minor, patch)
+    @major, @minor, @patch = major, minor, patch
+  end
+end </code></pre>
 </section>
 <section>
   <h2>
@@ -151,6 +154,180 @@ end </code></pre>
 
 >> version.major
 => 1 </code></pre>
+</section>
+<section>
+  <h2>
+    Instance Variables
+  </h2>
+  <p>
+    Identifier prefixed with a @
+  </p>
+  <pre><code class="ruby">class Version
+  def initialize(major, minor, patch)
+    @major, @minor, @patch = major, minor, patch
+  end
+end </code></pre>
+</section>
+<section>
+  <h2>
+    Instance Variables
+  </h2>
+  <p>
+    Object specific
+  </p>
+  <pre><code class="ruby">class Version
+  def initialize(major, minor, patch)
+    @major, @minor, @patch = major, minor, patch
+  end
+end </code></pre>
+</section>
+<section>
+  <h2>
+    Instance Variables
+  </h2>
+  <p>
+    Cannot be accessed outside of an object
+  </p>
+  <pre><code class="ruby">>> version = Version.new(1, 0, 0)
+=> #<Version:0x007fa5239c1088 @major=1, @minor=0, @patch=0>
+
+>> version.@major
+SyntaxError: (irb):11: syntax error, unexpected tIVAR, expecting '(' </code></pre>
+</section>
+<section>
+  <h2>
+    attr_accessor
+  </h2>
+  <p>
+    To solve that, there are methods available to expose them
+  </p>
+  <pre><code class="ruby">class Version
+  attr_accessor :major
+  attr_accessor :minor
+  attr_accessor :patch
+
+  def initialize(major, minor, patch)
+    @major, @minor, @patch = major, minor, patch
+  end
+end </code></pre>
+</section>
+<section>
+  <h2>
+    attr_accessor
+  </h2>
+  <p>
+    Creates a getter and setter
+  </p>
+  <pre><code class="ruby">class Version
+  attr_accessor :major
+  attr_accessor :minor
+  attr_accessor :patch
+
+  def initialize(major, minor, patch)
+    @major, @minor, @patch = major, minor, patch
+  end
+end </code></pre>
+</section>
+<section>
+  <h2>
+    attr_accessor
+  </h2>
+  <p>
+    Creates a getter and setter
+  </p>
+  <pre><code class="ruby">class Version
+  attr_accessor :major
+  attr_accessor :minor
+  attr_accessor :patch
+
+  def initialize(major, minor, patch)
+    @major, @minor, @patch = major, minor, patch
+  end
+end </code></pre>
+</section>
+<section>
+  <h2>
+    attr_accessor
+  </h2>
+  <p>
+    Creates a getter and setter
+  </p>
+  <pre><code class="ruby">>> version = Version.new(1, 0, 0)
+=> #<Version:0x007fa5239c1088 @major=1, @minor=0, @patch=0>
+
+>> version.major = 2
+=> 2
+>> version.major
+=> 2 </code></pre>
+</section>
+<section>
+  <h2>
+    attr_reader
+  </h2>
+  <p>
+    Creates a getter only
+  </p>
+  <pre><code class="ruby">class Version
+  attr_reader :major
+  attr_reader :minor
+  attr_reader :patch
+
+  def initialize(major, minor, patch)
+    @major, @minor, @patch = major, minor, patch
+  end
+end </code></pre>
+</section>
+<section>
+  <h2>
+    attr_reader
+  </h2>
+  <p>
+    Creates a getter only
+  </p>
+  <pre><code class="ruby">>> version = Version.new(1, 0, 0)
+=> #<Version:0x007fa5239c1088 @major=1, @minor=0, @patch=0>
+
+>> version.major
+=> 1
+>> version.major = 2
+NameError: undefined local variable or method `major=' for main:Object </code></pre>
+</section>
+<section>
+  <h2>
+    attr_writter
+  </h2>
+  <p>
+    Creates a setter only
+  </p>
+  <pre><code class="ruby">class Version
+  attr_writter :major
+  attr_writter :minor
+  attr_writter :patch
+
+  def initialize(major, minor, patch)
+    @major, @minor, @patch = major, minor, patch
+  end
+end </code></pre>
+</section>
+<section>
+  <h2>
+    attr_writter
+  </h2>
+  <p>
+    Creates a setter only
+  </p>
+  <pre><code class="ruby">>> version = Version.new(1, 0, 0)
+=> #<Version:0x007fa5239c1088 @major=1, @minor=0, @patch=0>
+
+>> version.major
+NameError: undefined local variable or method `major' for main:Object
+>> version.major = 2
+=> 2 </code></pre>
+</section>
+<section class="center" data-background="#000">
+  <h2 class="white">
+    This was a bad example ;)
+  </h2>
 </section>
 <section class="center" data-background="#000">
   <h2 class="white">
