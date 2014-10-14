@@ -166,13 +166,28 @@ section
   pre: code.ruby
     '
       class Version
-        attr_accessor :major
-        attr_accessor :minor
-        attr_accessor :patch
+        attr_accessor :major, :minor, :patch
 
         def initialize(major, minor, patch)
           @major, @minor, @patch = major, minor, patch
         end
+      end
+
+section
+  h2 attr_accessor
+  p Under the hood
+  pre: code.ruby
+    '
+      class Version
+        def major
+          @major
+        end
+
+        def major=(value)
+          @major = value
+        end
+
+        # ...
       end
 
 section
@@ -244,8 +259,21 @@ section
       >> version.major = 2
       => 2
 
-section.center data-background="#000"
-  h2.white This was a bad example ;)
+section.center
+  h2 This was a bad example ;)
+
+section
+  h2 attr_writter
+  p Creates a setter only
+  pre: code.ruby
+    '
+      >> version = Version.new(1, 0, 0)
+      => #<Version:0x007fa5239c1088 @major=1, @minor=0, @patch=0>
+
+      >> version.major
+      NameError: undefined local variable or method `major' for main:Object
+      >> version.major = 2
+      => 2
 
 section.center data-background="#000"
   h2.white Abstract

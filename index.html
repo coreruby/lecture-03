@@ -236,13 +236,30 @@ end </code></pre>
     Creates a getter and setter
   </p>
   <pre><code class="ruby">class Version
-  attr_accessor :major
-  attr_accessor :minor
-  attr_accessor :patch
+  attr_accessor :major, :minor, :patch
 
   def initialize(major, minor, patch)
     @major, @minor, @patch = major, minor, patch
   end
+end </code></pre>
+</section>
+<section>
+  <h2>
+    attr_accessor
+  </h2>
+  <p>
+    Under the hood
+  </p>
+  <pre><code class="ruby">class Version
+  def major
+    @major
+  end
+
+  def major=(value)
+    @major = value
+  end
+
+  # ...
 end </code></pre>
 </section>
 <section>
@@ -324,10 +341,25 @@ NameError: undefined local variable or method `major' for main:Object
 >> version.major = 2
 => 2 </code></pre>
 </section>
-<section class="center" data-background="#000">
-  <h2 class="white">
+<section class="center">
+  <h2>
     This was a bad example ;)
   </h2>
+</section>
+<section>
+  <h2>
+    attr_writter
+  </h2>
+  <p>
+    Creates a setter only
+  </p>
+  <pre><code class="ruby">>> version = Version.new(1, 0, 0)
+=> #<Version:0x007fa5239c1088 @major=1, @minor=0, @patch=0>
+
+>> version.major
+NameError: undefined local variable or method `major' for main:Object
+>> version.major = 2
+=> 2 </code></pre>
 </section>
 <section class="center" data-background="#000">
   <h2 class="white">
