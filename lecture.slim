@@ -12,6 +12,11 @@ section
 section.center
   img.inline src="img/troll.png"
 
+section
+  h2 Say Hi
+  p Introduce yourself over to the forums
+  p: a href="https://hackbulgaria.com/forum/topic/33/" https://hackbulgaria.com/forum/topic/33/
+
 section.center data-background="#000"
   h2.white Intuition
 
@@ -394,3 +399,120 @@ section.center
       IS SENDING A MESSAGE       |/ \|.-"```"-.|
                                  `` |||      |||
                               jgs   `"`      `"
+
+section.center data-background="#000"
+  h2.white Solutions
+
+section.center
+  pre: code.ruby
+    '
+      def histogram(string)
+        Hash.new(0).tap do |hist|
+          string.each_char { |char| hist[char] += 1 }
+        end
+      end
+
+section.center
+  pre: code.ruby
+    '
+      def prime?(n)
+        n > 1 && 2.upto(Math.sqrt n).all? { |k| n % k != 0 }
+      end
+
+section.center
+  pre: code.ruby
+    '
+      def ordinal(n)
+        return "#\{n}th" if (11..13).include? n % 100
+
+        case n % 10
+          when 1 then "#\{n}st"
+          when 2 then "#\{n}nd"
+          when 3 then "#\{n}rd"
+          else        "#\{n}th"
+        end
+      end
+
+section.center
+  pre: code.ruby
+    '
+      def palindrome?(n)
+        n.to_s == n.to_s.reverse
+      end
+
+
+section.center
+  pre: code.ruby
+    '
+      def anagram?(word, other)
+        histogram(word) == histogram(other)
+      end
+
+section.center
+  pre: code.ruby
+    '
+      def remove_prefix(string, pattern)
+        if index = string.index(pattern)
+          string[pattern] = '' if index.zero?
+        end
+
+        string
+      end
+
+section.center
+  pre: code.ruby
+    '
+      def remove_prefix(string, prefix)
+        string.sub(/\A#\{pattern}/, '')
+      end
+
+section.center
+  pre: code.ruby
+    '
+      def remove_suffix(string, pattern)
+        remove_prefix(string.reverse!, pattern.reverse).reverse!
+      end
+
+section.center
+  pre: code.ruby
+    '
+      def remove_suffix(string, pattern)
+        string.sub(/#\{pattern}\z/, '')
+      end
+
+section.center
+  pre: code.ruby
+    '
+      def digits(n)
+        n.to_s.each_char.map(&:to_i)
+      end
+
+section.center
+  pre: code.ruby
+    '
+      def fizzbuzz(range)
+        range.map do |n|
+          case
+          when [n % 3, n % 5].all?(&:zero?) :fizzbuzz
+          when (n % 3).zero?                :fizz
+          when (n % 5).zero?                :buzz
+          else                              n
+          end
+        end
+      end
+
+section.center
+  pre: code.ruby
+    '
+      def count(array)
+        array.each_with_object({}) do |element, h|
+          h[element] = array.count(element)
+        end
+      end
+
+section.center
+  pre: code.ruby
+    '
+      def count_words(*sentances)
+        count sentances.join.scan(/\w+/).map(&:downcase)
+      end
